@@ -229,14 +229,16 @@ const initLive2dData = () => {
     });
     jQuery(document).ready(function () {
         // 初始化
-        loadlive2d('live2d', $(".l2d_xb").attr("data-api") + '/33.2019.summer.config.json');
+        if (typeof loadlive2d === 'function') {
+            loadlive2d('live2d', $(".l2d_xb").attr("data-api") + '/33.2019.summer.config.json');
+        }
     });
     jQuery(document).ready(function ($) {
         for (selector in wordDict.hint) {
             $(selector).on('mouseover', ((sel) => function () {
                 let text = wordDict.hint[sel];
                 if (text.indexOf('%TEXT%') !== -1) {
-                    text.replaceAll('%TEXT%', $(sel).text());
+                    text = text.replaceAll('%TEXT%', $(this).text());
                 }
                 showMessage(text);
             })(selector));
@@ -311,15 +313,14 @@ const initLive2dData = () => {
     });
 }
 
-// 因加载方式导致，必须等到 Jquery 可用时才能初始化
+// 因加载方式导致，必须等到 Jquery、live2D 可用时才能初始化
 let jqeurySpinWaitTime = 0;
 let intervalId = setInterval(() => {
-    if (window.$) {
+    if (window.$ && typeof loadlive2d === 'function') {
         clearInterval(intervalId);
         initLive2dData();
-    } else if (jqeurySpinWaitTime == 100) {
-        alert("无法加载模型，因为等待 JQuery 超时，请确认是否添加了 JQuery");
-        console.error("JQuery 缺失！");
+    } else if (jqeurySpinWaitTime == 2000) {
+        console.error("无法加载模型，因为等待 JQuery 和 live2D 加载超时，刷新可能解决此问题");
         clearInterval(intervalId);
     } else {
         jqeurySpinWaitTime++;

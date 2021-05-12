@@ -77,13 +77,10 @@ const wordDict = {
         '.waifu-tool .wt-close': '已经厌倦了吗？',
         // %TEXT% 将被 $(this).text() 替换，用于文本类标签有较好的效果
         '.post-title': '要看看<span style="color:#0099cc;">%TEXT%</span>么？',
-        '.post-nepre.half.previous': '要看上一篇文章吗？',
-        '.post-nepre.half.next': '要看下一篇文章吗？',
+        '.post-nepre.previous': '要看上一篇文章吗？',
+        '.post-nepre.next': '要看下一篇文章吗？',
         '.comment-textarea': '留下您的伟论吧！',
         '.post-share': '要分享吗？感谢支持！',
-        '#author': '点击，然后留下尊姓大名',
-        '#email': '点击，填写后再评论就可以接收到回复通知啦',
-        '#url': '点击，然后让我可以与你相遇',
     },
     clickThreshold: 6, // 点击数到达此上限后，再点击将显示 clickAngry 内的信息
     // 点击看板娘显示信息，%TIMES% 将被替换为当前的点击次数
