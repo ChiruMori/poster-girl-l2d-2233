@@ -6,8 +6,8 @@
 
 使用本项目的 Demo （因服务器~~卓越~~性能的限制，初次加载、换装时会较慢）
 
-- [Demo: https://cxlm.work](https://cxlm.work) 即本项目中，src/demo.html 效果
-- [只含有看板娘功能的 Demo](https://cxlm.work/home/live2d/demo.html)
+- [Demo: https://cxlm.work](https://cxlm.work)
+- [只含有看板娘功能的 Demo](https://cxlm.work/home/live2d/demo.html) 即本项目中，src/demo.html 效果
 
 默认的代码**通常**无法跨域使用，但同域下是可以通过配置来使用的
 
