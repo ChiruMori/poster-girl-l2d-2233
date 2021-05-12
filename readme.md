@@ -27,7 +27,7 @@
 
 1. Star 本项目
 
-2. Download ZIP，解压，通常需要修改 auto_waifu.js 指定静态资源路径
+2. Download ZIP，解压，通常需要修改 auto_waifu.js 指定静态资源路径。另外，auto_waifu.js 中添加了一些定制项，现在可以更加灵活地进行定制了
 
     - 比如下面是默认的配置
 
