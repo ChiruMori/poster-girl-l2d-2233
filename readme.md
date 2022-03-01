@@ -103,3 +103,7 @@
 **poster-girl-l2d-2233** © [Moedog](https://github.com/xb2016), Released under the [GPL-2.0](./LICENSE) License.
 
 > Blog [moedog.org](https://moedog.org) · GitHub [@xb2016](https://github.com/xb2016) · Twitter [@moesdog](https://twitter.com/moesdog) · Telegram [@xb2016](https://t.me/xb2016)
+
+## TODO
+
++ 已知BUG：页面局部刷新后，绑定的监听失效

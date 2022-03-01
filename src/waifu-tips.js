@@ -236,6 +236,9 @@ const initLive2dData = () => {
     jQuery(document).ready(function ($) {
         for (selector in wordDict.hint) {
             $(selector).on('mouseover', ((sel) => function () {
+                if(lock) { // 如果当前正在移动，则鼠标悬浮效果无效
+                    return;
+                }
                 let text = wordDict.hint[sel];
                 if (text.indexOf('%TEXT%') !== -1) {
                     text = text.replaceAll('%TEXT%', $(this).text());
