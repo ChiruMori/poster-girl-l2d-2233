@@ -35,14 +35,14 @@ const wordDict = {
     oncopy: '转载要加上出处哦~', // 复制时
     role: { // 不同看板娘的定制行为
         '22': { // 22 娘时
-            appear: 'また会いましたね',
-            naked: '変態！見るな！',
-            dressing: 'どう？どう？'
+            appear: '是我喔！',
+            naked: '有变态！@',
+            dressing: '怎么样？'
         },
         '33': { // 33 娘时，对应的行为同上
-            appear: 'ただいまー', // 出现时（22、33 切换时）
-            naked: 'なんでこんなこと？', // 裸体模型出现时
-            dressing: 'どうだい' // 换装时（非裸体）
+            appear: '啊，又见面了', // 出现时（22、33 切换时）
+            naked: '不要这样。。。', // 裸体模型出现时
+            dressing: '嗯？' // 换装时（非裸体）
         }
     },
     time: { // 打开主页后，根据时间显示的信息，时间为 24 小时制，区间为左闭右开，仅支持整点
@@ -85,12 +85,26 @@ const wordDict = {
     clickThreshold: 6, // 点击数到达此上限后，再点击将显示 clickAngry 内的信息
     // 点击看板娘显示信息，%TIMES% 将被替换为当前的点击次数
     clickMsg: ["不小心的对吧，一定是这样", "我跑呀跑呀跑！~~", "再摸的话我可要报警了！⌇●﹏●⌇", "别摸我，有什么好摸的！", "不要摸我了，我超凶的！", "干嘛动我呀！小心我咬你！"],
-    clickAngry: ["来るな！", "いい加減にしろよ！", "你已经摸我%TIMES%次了", "救命！", "いやだ！", "110吗，这里有个变态一直在摸我(ó﹏ò｡)"],
+    clickAngry: ["别过来！", "差不多得了。。。", "你已经摸我%TIMES%次了", "救命！", "妈耶", "110吗，这里有个变态一直在摸我(ó﹏ò｡)"],
+}
+// 其他的可配置项
+window.poster2233 = {
+    // 是否出现落体模型
+    showR18Model: true,
+    // 是否可以在屏幕里乱跑
+    randomRun: true,
+    // 使用的一言集合，配置成 null 使用接口获取一言内容
+    hitokoto: [
+        "归去来兮！", "田园将芜胡不归？", "请息交以绝游", "世与我而相违",
+        "富贵非吾愿", "没有伞的孩子", "可惜没如果", "如果有选择", "已矣乎！",
+    ],
+    // 一言的间隔时长，单位 ms
+    restTimie: 60_000,
 }
 
 // 检测 JQuery
 if (!window.$) {
-    live2d_waifu_js[live2d_waifu_js.length] = 'https://cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js';
+    live2d_waifu_js[live2d_waifu_js.length] = 'https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js';
 }
 
 // 动态添加 css 文件

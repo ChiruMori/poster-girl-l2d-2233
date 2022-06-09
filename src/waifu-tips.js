@@ -1,4 +1,18 @@
 const initLive2dData = () => {
+
+    let configObj = {
+        // 是否出现落体模型
+        showR18Model: true,
+        // 是否可以在屏幕里乱跑
+        randomRun: true,
+        // 使用的一言集合
+        hitokoto: ["一言难尽"],
+        // 一言的间隔时长，单位 ms
+        restTimie: 25000,
+    };
+
+    configObj = Object.assign(configObj, window.poster2233);
+
     console.debug('开始加载 Live2D 模型');
 
     //初始位置，默认左上角，与下面的 目标位置 搭配修改
@@ -7,14 +21,14 @@ const initLive2dData = () => {
         'left': 0
     });
 
+    let isShow = false, // 当前是否正在显示
+        lock = false; // 动画过程中，锁定状态
+
     // 隐藏看板娘后的选项区域
     const live2dHideBtn = (function () {
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             return
         }
-
-        let isShow = false, // 当前是否正在显示
-            lock = false; // 动画过程中，锁定状态
 
         let $btn = $('#waifu-btn');
 
@@ -64,9 +78,6 @@ const initLive2dData = () => {
         }
     })();
 
-    // 是否允许出现 2018.playwater 模型
-    const showR18Model = true;
-
     const avaiableIds = ['2017.summer.normal1', '2019.bls', '2020.newyear',
         '2016.xmas2', '2019.summer', '2017.newyear', '2017.valley', '2019.deluxe2',
         '2018.bls-winter', '2017.cba-normal', '2018.lover', '2018.spring',
@@ -94,7 +105,7 @@ const initLive2dData = () => {
             } else {
                 window.location = window.location.protocol + '//' + window.location.hostname + '/'
             }
-        } catch (e) {}
+        } catch (e) { }
     });
     // 随机一句话
     $('.waifu-tool .wt-comments').click(function () {
@@ -136,7 +147,7 @@ const initLive2dData = () => {
     // 换装按钮
     $('.waifu-tool .wt-street-view').click(function () {
         let border = avaiableIds.length;
-        if (!showR18Model) {
+        if (!configObj.showR18Model) {
             border -= 1;
         }
         if (model_p === 22) {
@@ -175,9 +186,15 @@ const initLive2dData = () => {
     });
 
     function showHitokoto() {
-        $.get("https://v1.hitokoto.cn/?encode=text", function (result) {
-            showMessage(result)
-        })
+        let size = configObj.hitokoto.length;
+        if (0 === size) {
+            $.get("https://v1.hitokoto.cn/?encode=text", function (result) {
+                showMessage(result)
+            });
+            return;
+        }
+        let indexToShow = ~~Math.random(size);
+        showMessage(configObj.hitokoto[indexToShow]);
     }
 
     function showMessage(a, b) {
@@ -236,7 +253,7 @@ const initLive2dData = () => {
     jQuery(document).ready(function ($) {
         for (selector in wordDict.hint) {
             $(selector).on('mouseover', ((sel) => function () {
-                if(lock) { // 如果当前正在移动，则鼠标悬浮效果无效
+                if (lock) { // 如果当前正在移动，则鼠标悬浮效果无效
                     return;
                 }
                 let text = wordDict.hint[sel];
@@ -249,8 +266,8 @@ const initLive2dData = () => {
     });
     jQuery(document).ready(function ($) {
         window.setInterval(function () {
-            showMessage(showHitokoto());
-        }, 25000);
+            showHitokoto();
+        }, configObj.restTimie);
         var stat_click = 0;
         // 绑定点击事件监听
         $("#live2d").click(function () {
@@ -284,6 +301,9 @@ const initLive2dData = () => {
     jQuery(document).ready(function ($) {
         var box = $('.waifu')[0];
         var topCount = 20;
+        if (!configObj.randomRun) {
+            return;
+        }
         box.onmousedown = function (e) {
             var Ocx = e.clientX;
             var Ocy = e.clientY;
