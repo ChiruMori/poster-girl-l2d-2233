@@ -193,7 +193,7 @@ const initLive2dData = () => {
             });
             return;
         }
-        let indexToShow = ~~Math.random(size);
+        let indexToShow = ~~(Math.random() * size);
         showMessage(configObj.hitokoto[indexToShow]);
     }
 
