@@ -113,7 +113,7 @@ const initLive2dData = () => {
     });
     // 详情页面
     $('.waifu-tool .wt-info-circle').click(function () {
-        window.open('https://cxlm.work/archives/add-live2d-2233');
+        window.open('https://mori.plus/archives/add-live2d-2233');
     });
     // 拍照页面
     $('.waifu-tool .wt-camera').click(function () {
@@ -188,7 +188,7 @@ const initLive2dData = () => {
     function showHitokoto() {
         let size = configObj.hitokoto.length;
         if (0 === size) {
-            $.get("https://v1.hitokoto.cn/?encode=text", function (result) {
+            $.get("https://v1.hitokoto.cn/?encode=text&c=a", function (result) {
                 showMessage(result)
             });
             return;

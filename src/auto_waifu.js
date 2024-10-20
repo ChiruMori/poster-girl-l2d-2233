@@ -1,14 +1,14 @@
 // API 的 URL 前缀
-const live2d_api_prefix = 'https://cxlm.work/home/live2d';
-// const live2d_api_prefix = 'http://127.0.0.1:5500/src/'; // 本地 demo 测试使用
+// const live2d_api_prefix = 'https://cxlm.work/home/live2d';
+const live2d_api_prefix = 'http://127.0.0.1:5500/src/'; // 本地 demo 测试使用
 
 // 同时需要引入的 css
-const live2d_waifu_css = ['/home/live2d/waifu.css'];
-// const live2d_waifu_css = ['/src/waifu.css'];
+// const live2d_waifu_css = ['/home/live2d/waifu.css'];
+const live2d_waifu_css = ['/src/waifu.css'];
 
 // 需要引入的 js 文件，无需手动添加 Jquery 因为后面会自动检测并添加
-const live2d_waifu_js = ['/home/live2d/live2d.min.js', '/home/live2d/waifu-tips.js']
-// const live2d_waifu_js = ['/src/live2d.min.js', '/src/waifu-tips.js'] // 本地 demo 测试使用
+// const live2d_waifu_js = ['/home/live2d/live2d.min.js', '/home/live2d/waifu-tips.js']
+const live2d_waifu_js = ['/src/live2d.min.js', '/src/waifu-tips.js'] // 本地 demo 测试使用
 
 // live2d 区域的 DOM 代码
 const live2d_dom_html = `<div class="l2d_xb" data-api="${live2d_api_prefix}">
@@ -94,10 +94,7 @@ window.poster2233 = {
     // 是否可以在屏幕里乱跑
     randomRun: true,
     // 使用的一言集合，配置成 null 使用接口获取一言内容
-    hitokoto: [
-        "归去来兮！", "田园将芜胡不归？", "请息交以绝游", "世与我而相违",
-        "富贵非吾愿", "没有伞的孩子", "可惜没如果", "如果有选择", "已矣乎！",
-    ],
+    hitokoto: null,
     // 一言的间隔时长，单位 ms
     restTimie: 60_000,
 }
@@ -137,7 +134,7 @@ live2dWrapperDiv.innerHTML = live2d_dom_html;
 document.body.appendChild(live2dWrapperDiv);
 
 // 控制台签名
-console.log('%chttps://cxlm.work%cLive2d ~ 2233%c',
+console.log('%chttps://mori.plus%cLive2d ~ 2233%c',
     'border-radius:3px;padding:3px;background:#000;color:#fff;',
     'border-radius:3px;padding:3px;background:#0af;color:#fff;',
     'background:transparent;');
