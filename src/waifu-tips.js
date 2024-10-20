@@ -186,14 +186,13 @@ const initLive2dData = () => {
     });
 
     function showHitokoto() {
-        let size = configObj.hitokoto.length;
-        if (0 === size) {
+        if (!configObj.hitokoto || 0 === configObj.hitokoto.length) {
             $.get("https://v1.hitokoto.cn/?encode=text&c=a", function (result) {
                 showMessage(result)
             });
             return;
         }
-        let indexToShow = ~~(Math.random() * size);
+        let indexToShow = ~~(Math.random() * configObj.hitokoto.length);
         showMessage(configObj.hitokoto[indexToShow]);
     }
 
